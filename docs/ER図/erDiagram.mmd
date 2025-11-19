@@ -20,7 +20,7 @@ users {
     varchar(256) name
     varchar(256) email
     datetime created_at
-    boolean is_admin
+    bigint permission_id
     datetime last_login_at
     int cpu_limit_cores "0 for unlimited"
     int memory_limit_mb "0 for unlimited"
@@ -32,25 +32,12 @@ user_credentials {
     varchar(256) hashed_password
 }
 
-permissions {
-    int id PK
-    varchar name
+permission {
+    bigint id PK
+    is_admin boolean
+    
 }
 
-roles {
-    int id PK
-    varchar(256) name
-}
-
-role_permissions {
-    int role_id FK, PK
-    int permission_id FK, PK
-}
-
-user_roles {
-    bigint user_id FK, PK
-    int role_id FK, PK
-}
 
 backups {
     bigint id PK
@@ -225,7 +212,3 @@ security_groups }o--o{ virtual_machine_security_groups : "is applied to"
 users ||--o{ portfolios : "owns"
 portfolios ||--o{ portfolio_articles : "contains"
 users |o--|| user_credentials : "has"
-users }o--o{ user_roles : "has"
-roles }o--o{ user_roles : "is assigned to"
-roles }o--o{ role_permissions : "has"
-permissions }o--o{ role_permissions : "is granted to"
