@@ -33,8 +33,6 @@ import ResourceDetailShell from "~/components/detail/ResourceDetailShell.vue";
 import MoImageEdit from "~/components/MoImageEdit.vue";
 import { imageTabs } from "~/composables/detail/useImageTabs";
 
-const { addToast } = useToast();
-
 const route = useRoute();
 const router = useRouter();
 
@@ -84,7 +82,6 @@ const handleEditSuccess = async () => {
     await refresh();
   } catch (e) {
     console.error("Image再取得に失敗しました", e);
-    addToast({ message: "再取得に失敗しました", type: "error" });
   }
 
   // 次回の編集も確実に初期値が入るように同期しておく
@@ -101,10 +98,5 @@ const handleAction = async (action: { label: string; value: string }) => {
     await openEditModal();
     return;
   }
-
-  addToast({
-    message: `未対応のアクションです: ${action.label}`,
-    type: "error",
-  });
 };
 </script>
