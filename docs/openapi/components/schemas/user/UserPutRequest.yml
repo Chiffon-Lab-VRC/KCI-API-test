@@ -1,14 +1,17 @@
 type: object
 description: ユーザ更新リクエストオブジェクト
 allOf:
-  - $ref: ./UserUpdatable.yml
+  - $ref: "./UserUpdatable.yml"
 required:
   - name
   - email
+  - maxCpuCore
+  - maxMemorySize
+  - maxStorageSize
   - isAdmin
   - isImageAdmin
   - isInstanceTypeAdmin
   - isVirtualMachineAdmin
   - isNetworkAdmin
   - isSecurityGroupAdmin
-  - isPhysicalNodeAdmin
+  - isNodeAdmin

@@ -1,0 +1,14 @@
+packages:
+  - srcs
+  - mock
+ignoredBuiltDependencies:
+  - '@parcel/watcher'
+  - core-js
+  - esbuild
+  - pnpm-lock.yaml
+  - protobufjs
+  - sharp
+  - vue-demi
+onlyBuiltDependencies:
+  - '@prisma/engines'
+  - prisma

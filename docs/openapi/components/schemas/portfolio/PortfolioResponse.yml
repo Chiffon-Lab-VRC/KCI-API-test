@@ -1,4 +1,0 @@
-type: object
-description: ポートフォリオレスポンスオブジェクト
-allOf:
-  - $ref: "./PortfolioServerBase.yml"
