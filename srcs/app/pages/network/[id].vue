@@ -38,8 +38,6 @@ import { useToast } from "@/composables/useToast";
 import MoVirtualNetworkEdit from "@/components/MoVirtualNetworkEdit.vue";
 import { NETWORK } from "@/utils/constants";
 
-const { addToast } = useToast();
-
 const route = useRoute();
 const router = useRouter();
 
@@ -80,11 +78,6 @@ const handleEditSave = async (updated: VirtualNetworkResponse) => {
   // ひとまずローカルの表示を更新
   vnet.value = updated;
   isEditOpen.value = false;
-
-  addToast({
-    message: "仮想ネットワークの情報を更新しました（ダミー）",
-    type: "success",
-  });
 
   // 将来 API を実装したらサーバの内容を取り直したい場合：
   if (typeof refresh === "function") {
